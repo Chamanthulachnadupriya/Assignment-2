@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>Hello, world! This is my first webpage.</p>
+    <script src="script.js"></script>
+</body>
+</html>
+p {
+    color: blue;
+    text-align: center;
+}
+function changeTextColor() {
+    var paragraph = document.querySelector('p');
+    paragraph.style.color = 'red';
+}
+
+var button = document.createElement('button');
+button.textContent = 'Change Text Color';
+button.addEventListener('click', changeTextColor);
+
+document.body.appendChild(button);
+import React from 'react';
+
+function App() {
+    return (
+        <div>
+            <h1>Hello, React!</h1>
+        </div>
+    );
+}
+
+export default App;
+import React from 'react';
+
+function Greeting(props) {
+    return (
+        <div>
+            <h2>Hello, {props.name}!</h2>
+        </div>
+    );
+}
+
+export default Greeting;
+import React from 'react';
+import Greeting from './Greeting';
+
+function App() {
+    return (
+        <div>
+            <Greeting name="YourName" />
+        </div>
+    );
+}
+
+export default App;
+import React, { useState } from 'react';
+
+function Form() {
+    const [name, setName] = useState('');
+    const [greeting, setGreeting] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setGreeting(`Hello, ${name}!`);
+    };
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <button type="submit">Submit</button>
+            </form>
+            <p>{greeting}</p>
+        </div>
+    );
+}
+
+export default Form;
+npm install react-router-dom
+import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+
+function App() {
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                    </ul>
+                </nav>
+
+                <Route path="/" exact component={Home} />
+                <Route path="/about" component={About} />
+            </div>
+        </Router>
+    );
+}
+
+export default App;
+import React, { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+
+    const decrement = () => {
+        setCount(count - 1);
+    };
+
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={increment}>Increment</button>
+            <button onClick={decrement}>Decrement</button>
+        </div>
+    );
+}
+
+export default Counter;
